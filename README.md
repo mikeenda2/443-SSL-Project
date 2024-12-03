@@ -23,3 +23,23 @@ Repo for our SSL dashboard app.
   Open your browser and navigate to:
   `https://localhost:5001/swagger/index.html`
 
+
+## Steps to Set Up and Run the Frontend:
+
+1. **Navigate to the Frontend Directory**  
+   Open your terminal and navigate to the `SslDashboard` folder:
+   ```bash
+   cd 443-SSL-Project/Frontend/SslDashboard
+
+2. **Install NPM**  
+   Run the following command
+   ```npm install
+
+
+3. **Run The Frontend**  
+   In the command line run: 
+   ```ng serve
+
+4. **View the Frontend**
+    Open your browser and go to:
+    ```http://localhost:4200/

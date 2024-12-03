@@ -11,11 +11,24 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 // Add services to the container
-builder.Services.AddControllers(); // Register controllers
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // Angular app origin
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // Allow credentials if needed
+    });
+});
 
 var app = builder.Build();
+
+// Add CORS Middleware before routing
+app.UseCors("AllowAngularApp");
 
 if (app.Environment.IsDevelopment())
 {
@@ -35,10 +48,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
-
