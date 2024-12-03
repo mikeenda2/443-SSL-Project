@@ -44,4 +44,5 @@ Repo for our SSL dashboard app.
 
 5. **View the Frontend**
     Open your browser and go to:
-    ```http://localhost:4200/
+   ```bash
+    http://localhost:4200/
