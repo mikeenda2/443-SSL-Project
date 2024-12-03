@@ -1,5 +1,5 @@
-# SSL-Project-Backend
-Backend repo for our SSL dashboard app. 
+# 443-SSL-Project
+Repo for our SSL dashboard app. 
 
 ## Steps to Set Up and Run the Backend:
 
