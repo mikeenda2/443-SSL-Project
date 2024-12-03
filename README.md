@@ -33,13 +33,15 @@ Repo for our SSL dashboard app.
 
 2. **Install NPM**  
    Run the following command
-   ```npm install
+   ```bash
+   npm install
 
 
 3. **Run The Frontend**  
-   In the command line run: 
-   ```ng serve
+   In the command line run:
+   ```bash
+   ng serve
 
-4. **View the Frontend**
+5. **View the Frontend**
     Open your browser and go to:
     ```http://localhost:4200/
