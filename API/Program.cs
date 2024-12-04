@@ -25,6 +25,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Register the SSLCertificateService for dependency injection
+builder.Services.AddScoped<API.Services.ISSLCertificateService, API.Services.SSLCertificateService>();
+
 var app = builder.Build();
 
 // Add CORS Middleware before routing
