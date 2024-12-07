@@ -1,3 +1,20 @@
 <h1>SSL Dashboard</h1>
 <button (click)="fetchHelloWorld()">Get Hello World From Backend</button>
 <p *ngIf="helloWorldMessage">{{ helloWorldMessage }}</p>
+<div>
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+  $http.get("https://localhost:5001/api/HelloWorld")
+  .then(function (response) {$scope.names = response.data.records;});
+});
+</script>

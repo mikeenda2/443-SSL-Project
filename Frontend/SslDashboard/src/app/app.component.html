@@ -1,6 +1,18 @@
-<main class="main">
-  <app-dashboard></app-dashboard>
-</main>
+<div class="container">
+  <h1>SSL Certificate Viewer</h1>
+  <input [(ngModel)]="websiteUrl" type="text" placeholder="Enter website URL" />
+  <button (click)="fetchSSLInfo()">Get SSL Info</button>
 
+  <div *ngIf="sslInfo">
+    <h2>SSL Certificate Information:</h2>
+    <p><strong>Issuer:</strong> {{ sslInfo?.issuer }}</p>
+    <p><strong>Subject:</strong> {{ sslInfo?.subject }}</p>
+    <p><strong>Valid From:</strong> {{ sslInfo?.validFrom }}</p>
+    <p><strong>Valid To:</strong> {{ sslInfo?.validTo }}</p>
+    <pre><strong>Certificate:</strong> {{ sslInfo?.certificate }}</pre>
+  </div>
 
-<router-outlet />
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+</div>

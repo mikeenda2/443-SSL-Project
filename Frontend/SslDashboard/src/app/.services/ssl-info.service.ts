@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SSLInfoService {
   //backend Endpoint url
-  private apiUrl = 'https://localhost:5001/api/HelloWorld';
+  private apiUrl = 'https://localhost:5001/';
 
   constructor(private http: HttpClient) { }
 
