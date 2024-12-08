@@ -56,8 +56,8 @@ namespace API.Services
 
                     // Calculate time remaining before the certificate expires
                     TimeSpan timeRemaining = expirationDate - DateTime.Now;
-                    string timeRemainingStr = timeRemaining.TotalDays > 0 
-                        ? $"{timeRemaining.TotalDays:F1} days remaining" 
+                    string timeRemainingStr = timeRemaining.TotalDays > 0
+                        ? $"{timeRemaining.TotalDays:F1} days remaining"
                         : "Expired";
 
                     // Construct a response object with the collected details

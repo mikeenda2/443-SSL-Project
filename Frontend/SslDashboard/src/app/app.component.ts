@@ -1,35 +1,13 @@
 import { Component } from '@angular/core';
-import { SslCertificateService, SSLInfo } from './ssl-certificate.service';
-
+import { RouterOutlet } from '@angular/router';
+import { DashboardComponent } from "./dashboard/dashboard.component";
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, DashboardComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  websiteUrl: string = '';
-  sslInfo: SSLInfo | null = null;
-  error: string | null = null;
-
-  constructor(private sslCertificateService: SslCertificateService) {}
-
-  fetchSSLInfo() {
-    this.error = null; // Reset previous errors
-    this.sslInfo = null; // Reset previous data
-    
-    if (this.websiteUrl.trim() === '') {
-      this.error = 'Please enter a valid URL.';
-      return;
-    }
-
-    this.sslCertificateService.getSSLCertificateDetails(this.websiteUrl)
-      .subscribe({
-        next: (data) => {
-          this.sslInfo = data;
-        },
-        error: (err) => {
-          this.error = 'Error fetching SSL certificate details. Please try again later.';
-        }
-      });
-  }
+  title = 'SslDashboard';
 }
