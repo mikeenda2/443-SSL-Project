@@ -3,11 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { SSLInfoService } from '../.services/ssl-info.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [HttpClientModule, NgFor, NgIf, FormsModule],
+  providers: [DatePipe],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -16,7 +18,7 @@ export class DashboardComponent {
   sslInfoArray: { key: string; value: any }[] = [];
   inputUrl: string = '';
 
-  constructor(private sslInfoService: SSLInfoService) { }
+  constructor(private sslInfoService: SSLInfoService, private datePipe: DatePipe) { }
 
   getWebsiteCertificate(): void {
     if (!this.inputUrl) {
@@ -31,7 +33,13 @@ export class DashboardComponent {
           this.sslInfo = response;
         }
         if (this.sslInfo) {
-          this.sslInfoArray = Object.entries(this.sslInfo).map(([key, value]) => ({ key, value }));
+          this.sslInfoArray = Object.entries(this.sslInfo).map(([key, value]) => {
+            if (key === 'ExpirationDate') {
+              // Format the ExpirationDate
+              value = this.datePipe.transform(value, 'MMM d, y, h:mm:ss a');
+            }
+            return { key, value };
+          });
         }
       },
       (error) => {
