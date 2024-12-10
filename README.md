@@ -36,7 +36,6 @@ Repo for our SSL dashboard app.
    ```bash
    npm install
 
-
 3. **Run The Frontend**  
    In the command line run:
    ```bash
